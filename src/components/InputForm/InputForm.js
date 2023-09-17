@@ -9,16 +9,16 @@ const defaultValues = {
 
 const InputForm = () => {
   const [enteredCurrentSavings, setEnteredCurrentSavings] = useState(
-    "defaultValues.currentSavings"
+    defaultValues.currentSavings
   );
   const [enteredYearlyContribution, setEnteredYearlyContribution] = useState(
-    "defaultValues.yearlyContribution"
+    defaultValues.yearlyContribution
   );
   const [enteredExpectedReturn, setEnteredExpectedReturn] = useState(
-    "defaultValues.expectedReturn"
+    defaultValues.expectedReturn
   );
   const [enteredDuration, setEnteredDuration] = useState(
-    "defaultValues.duration"
+    defaultValues.duration
   );
 
   const currentInputHandler = (event) => {
