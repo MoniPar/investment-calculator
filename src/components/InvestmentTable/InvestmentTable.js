@@ -1,26 +1,47 @@
-const InvestmentTable = () => {
-    return (
-        <table className="result">
-        <thead>
-          <tr>
-            <th>Year</th>
-            <th>Total Savings</th>
-            <th>Interest (Year)</th>
-            <th>Total Interest</th>
-            <th>Invested Capital</th>
+const formatter = new Intl.NumberFormat("en-EU", {
+  style: "currency",
+  currency: "EUR",
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2
+});
+
+const InvestmentTable = (props) => {
+  return (
+    <table className="result">
+      <thead>
+        <tr>
+          <th>Year</th>
+          <th>Total Savings</th>
+          <th>Interest (year)</th>
+          <th>Total Interest</th>
+          <th>Invested Capital</th>
+        </tr>
+      </thead>
+      <tbody>
+        {props.data.map((dataPerYear) => (
+          <tr key={dataPerYear.year}>
+            {/* YEAR NUMBER */}
+            <td>{dataPerYear.year}</td>
+            {/* TOTAL SAVINGS END OF YEAR */}
+            <td>{formatter.format(dataPerYear.savingsEndOfYear)}</td>
+            {/* INTEREST GAINED IN YEAR */}
+            <td>{formatter.format(dataPerYear.yearlyInterest)}</td>
+            {/* TOTAL INTEREST GAINED */}
+            <td>
+              {formatter.format(dataPerYear.savingsEndOfYear -
+                props.initialInvestment -
+                dataPerYear.yearlyContribution * dataPerYear.year)}
+            </td>
+            {/* TOTAL INVESTED CAPITAL */}
+            <td>
+              {formatter.format(props.initialInvestment +
+                dataPerYear.yearlyContribution * dataPerYear.year)}
+            </td>
           </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>YEAR NUMBER</td>
-            <td>TOTAL SAVINGS END OF YEAR</td>
-            <td>INTEREST GAINED IN YEAR</td>
-            <td>TOTAL INTEREST GAINED</td>
-            <td>TOTAL INVESTED CAPITAL</td>
-          </tr>
-        </tbody>
-      </table>
-    )
-}
+        ))}
+      </tbody>
+    </table>
+  );
+};
 
 export default InvestmentTable;
