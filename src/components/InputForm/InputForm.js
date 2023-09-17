@@ -1,6 +1,15 @@
 const InputForm = () => {
+
+  const submitHandler = (event) => {
+    event.preventDefault();
+    console.log("Calculate button clicked!")
+  }
+
+  const resetHandler = () => {
+    console.log("Reset button clicked!")
+  }
     return (
-        <form className="form">
+        <form className="form" onClick={submitHandler}>
         <div className="input-group">
           <p>
             <label htmlFor="current-savings">Current Savings ($)</label>
@@ -24,7 +33,7 @@ const InputForm = () => {
           </p>
         </div>
         <p className="actions">
-          <button type="reset" className="buttonAlt">
+          <button type="reset" className="buttonAlt" onClick={resetHandler}>
             Reset
           </button>
           <button type="submit" className="button">
