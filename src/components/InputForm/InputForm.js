@@ -7,7 +7,7 @@ const defaultValues = {
   duration: 5,
 };
 
-const InputForm = () => {
+const InputForm = (props) => {
   const [enteredCurrentSavings, setEnteredCurrentSavings] = useState(
     defaultValues.currentSavings
   );
@@ -45,6 +45,7 @@ const InputForm = () => {
     };
 
     console.log(investmentData);
+    props.onCalculateInvestment(investmentData);
   };
 
   const resetHandler = () => {
