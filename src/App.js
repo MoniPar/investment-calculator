@@ -38,7 +38,7 @@ function App() {
       <InputForm onCalculateInvestment={calculateHandler} />
 
       {!userInvestmentData && (
-        <p>
+        <p className="fallback">
           Fill in the form above and click 'Calculate' to view your results.
         </p>
       )}
